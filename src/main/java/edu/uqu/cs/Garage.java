@@ -4,10 +4,12 @@ package edu.uqu.cs;
  * CS 1312
  */
 
+//import javax.swing.text.DefaultEditorKit.DefaultKeyTypedAction;
+
 /*
 * Make sure to complete and submit your lab
 */
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Garage{
 
@@ -21,6 +23,7 @@ public class Garage{
      * private classType [] varName = new classType[size];
      *
      */
+private Car[] cars = new Car[3];
 
     /************ Part 2 **************/
     /**
@@ -31,7 +34,7 @@ public class Garage{
      * public dataType varName= value;
      *
      */
-
+public static int countCars = 0;
     /************ Part 3 **************/
     /**
      * Define a default constructor to create
@@ -45,7 +48,11 @@ public class Garage{
      *     }
      *}
      */
-
+public Garage() {
+    for (int mej = 0; mej < cars.length; mej++) {
+        cars[mej] = new Car();
+    }
+}
     /************ Part 4 **************/
     /**
      * Define addCar(String parameter) that adds a new car (by model) to the garage 
@@ -60,7 +67,25 @@ public class Garage{
      * public void methodName(String m)
      */
 
-
+public void addCar(String model) {
+    if (countCars == cars.length) {
+        System.out.println("Garage in full. Cannot add any more cars.");
+        } else {
+            boolean carExists = false;
+            for (int mej = 0; mej < countCars; mej++) {
+                if (cars[mej].getmodel().equals(model)) {
+                    System.out.println("Car" + model + "already exits in the garage.");
+                    carExists = true;
+                   break; 
+                }
+            } 
+            if (!carExists) {
+                cars[countCars].setmodel(model);
+                cars[countCars].moveCarIn();
+                countCars++;
+            }   
+        }
+}
     /************ Part 5 **************/
     /**
      * Define moveOut(String) that moves the car (by model) out of the garage; 
@@ -71,8 +96,23 @@ public class Garage{
      * public void methodName(String m)
      *
      */
-
-
+    public void movedut(String model) {
+        boolean carExists = false;
+        for (int mej = 0; mej < countCars; mej++) {
+        if (cars[mej].getmodel().equals (model)) {
+        cars[mej].moveCarOut ();
+        carExists = true;
+        for (int jem = mej; jem < countCars - 1; jem++) {
+        cars[jem] = cars [jem+1];
+        } 
+        countCars--; 
+        break;
+    }    
+        }
+        if (!carExists) {
+        System.out.println("Car " + model + " does not exist in the garage.");
+        }
+    }
 
     /************ Part 6 **************/
     /**
@@ -85,7 +125,19 @@ public class Garage{
      *
      */
 
-
+     public void moveIn(String model) {
+        boolean carExists = false;
+        for (int mej = 0; mej < countCars; mej++) {
+        if (cars[mej].getmodel() .equals (model)) {
+        System.out.println("Car " + model + " is already in the garage.");
+        carExists = true;
+        break;
+        }
+    }
+        if (!carExists) {
+        addCar (model);
+        }
+    }
     /************ Part 7 **************/
     /**
      * Define listCars() to display/list all the cars in the garage;
@@ -95,7 +147,12 @@ public class Garage{
      * public void methodName(String m)
      *
      */
-
-
+    public void listCars() {
+        for (int mej = 0; mej < countCars; mej++) {
+        System.out.println("Car " + (mej+1) + ": " + cars [mej].getmodel ());
+        }
+    }
+    public void moveOut(String string) {
+    }
 
 }

@@ -7,7 +7,7 @@ package edu.uqu.cs;
 /*
 * Make sure to complete and submit your lab
 */
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Car{
 
@@ -21,6 +21,8 @@ public class Car{
      * private dataType name;
      *
      */
+private String model;
+private boolean inOutGarage;
 
     /************ Part 2 **************/
     /**
@@ -33,7 +35,10 @@ public class Car{
      *      //body
      * }
      */
-
+public Car() {
+    this.model = "";
+    this.inOutGarage = false;
+}
     /************ Part 3 **************/
     /**
      * Define all getter methods below
@@ -43,7 +48,13 @@ public class Car{
      *      return this.InstanceVariableName;
      * }
      */
+public String getmodel() {
+    return this.model;
+}
 
+public boolean getinOutGarage() {
+    return this.inOutGarage;
+}
 
     /************ Part 4 **************/
     /**
@@ -54,8 +65,12 @@ public class Car{
      * }
      *
      */
-
-
+public void setmodel(String model) {
+    this.model = model;
+}
+public void setinOutGarage(boolean inOutGarage) {
+    this.inOutGarage = inOutGarage;
+}
     /************ Part 5 **************/
     /**
      * Implement the following two methods
@@ -64,6 +79,10 @@ public class Car{
      *
      */
 
-
-
+public void moveCarIn() {
+    this.inOutGarage = true;
+}
+public void moveCarOut() {
+    this.inOutGarage = false;
+}
 }
